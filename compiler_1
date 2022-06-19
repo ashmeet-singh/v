@@ -1,0 +1,26 @@
+namespace compiler_1
+
+compiler_2_source_code_size 0x1000000
+compiler_2_source_code_address 0x1000008
+compiler_2_byte_code_size 0x2000000
+compiler_2_byte_code_address 0x2000008
+
+start:
+
+key_value_database:
+bz 128000
+
+source_code_symbol:
+b 0
+
+source_code_pointer:
+d 0
+
+byte_code_pointer:
+d 0
+
+state:
+d 1
+
+
+endnamespace

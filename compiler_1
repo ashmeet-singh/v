@@ -7,6 +7,12 @@ D 0
 _State:
 D 0
 
+_StateMachineJumpAddresses:
+D State0 State1 State2
+
+_TotalStates:
+D 3
+
 _Token:
 BZ 256
 
@@ -16,33 +22,19 @@ B 0
 SEGMENT CODE
 ADDRESS 0x10000
 
-NextCompilerSourceCodeAddress 0x1000000
-NextCompilerByteCodeAddress 0x2000000
-
 Start:
 PUSHDL StateMachineLoop
 JUMP
 
 StateMachineLoop:
-
-PUSHDL State0
-PUSHDL 0
 PUSHDL _State
 PUSHD
-BEQ
-
-
-PUSHDL State1
-PUSHDL 1
-PUSHDL _State
+PUSHDL 3
+SL
+PUSHDL _StateMachineJumpAddresses
+ADD
 PUSHD
-BEQ
-
-PUSHDL State2
-PUSHDL 2
-PUSHDL _State
-PUSHD
-BEQ
+JUMP
 
 State0:
 PUSHDL 1

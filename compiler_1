@@ -1,26 +1,50 @@
-namespace compiler_1
+SEGMENT DATA
+ADDRESS 0x40000
 
-compiler_2_source_code_size 0x1000000
-compiler_2_source_code_address 0x1000008
-compiler_2_byte_code_size 0x2000000
-compiler_2_byte_code_address 0x2000008
+_Segment:
+D 0
 
-start:
+_State:
+D 0
 
-key_value_database:
-bz 128000
+_Token:
+BZ 256
 
-source_code_symbol:
-b 0
+_Character:
+B 0
 
-source_code_pointer:
-d 0
+SEGMENT CODE
+ADDRESS 0x10000
 
-byte_code_pointer:
-d 0
+NextCompilerSourceCodeAddress 0x1000000
+NextCompilerByteCodeAddress 0x2000000
 
-state:
-d 1
+Start:
+
+StateMachineLoop:
+
+PUSHDL State0
+PUSHDL 0
+PUSHDL _State
+PUSHD
+BEQ
 
 
-endnamespace
+PUSHDL State1
+PUSHDL 1
+PUSHDL _State
+PUSHD
+BEQ
+
+PUSHDL State2
+PUSHDL 2
+PUSHDL _State
+PUSHD
+BEQ
+
+State0:
+PUSHDL 1
+PUSHDL _State
+POPD
+PUSHDL StateMachineLoop
+JUMP
